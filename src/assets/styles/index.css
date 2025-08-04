@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.ps-submenu-expand-icon {
+  display: none;
+}
+.ps-menu-button:hover {
+  @apply !bg-gray-500 !text-red-300
+}
+.date-picker-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Input field styles */
+.date-picker-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #1f2937;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.date-picker-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.date-picker-input.has-error {
+  border-color: #ef4444;
+}
+
+.date-picker-input.has-value {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Floating label styles */
+.date-picker-label {
+  position: absolute;
+  left: 1rem;
+  font-size: 0.875rem;
+  transition: all 0.15s ease-in-out;
+  pointer-events: none;
+  color: #6b7280;
+}
+
+.date-picker-label.floating {
+  transform: translateY(-0.5rem);
+  font-size: 0.75rem;
+  color: #3b82f6;
+}
+
+.date-picker-label.error {
+  color: #ef4444;
+}
+
+/* Calendar icon styles */
+.date-picker-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Calendar container styles */
+.react-datepicker {
+  font-family: inherit;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.react-datepicker__header {
+  background-color: #ffffff !important;
+  border-bottom: none;
+  padding: 1rem 0 0.5rem;
+}
+
+/* Month header styles */
+.datepicker-header {
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+}
+
+.datepicker-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.datepicker-month-year {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* Navigation button styles */
+.datepicker-nav-button {
+  padding: 0.25rem;
+  border-radius: 9999px;
+  color: #6b7280;
+  transition: all 0.15s ease-in-out;
+}
+
+.datepicker-nav-button:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.datepicker-nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.react-datepicker-wrapper{
+  flex:1 !important;
+}
+/* Day name styles */
+.react-datepicker__day-name {
+  width: 2rem;
+  line-height: 2rem;
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Day styles */
+.react-datepicker__day {
+  width: 2rem;
+  line-height: 2rem;
+  margin: 0;
+  border-radius: 9999px;
+  color: #1f2937;
+  transition: all 0.15s ease-in-out;
+}
+
+.react-datepicker__day:hover {
+  background-color: #eff6ff;
+  color: #3b82f6;
+}
+
+.react-datepicker__day--selected {
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.react-datepicker__day--selected:hover {
+  background-color: #2563eb;
+}
+
+.react-datepicker__day--today {
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #eff6ff;
+  color: #3b82f6;
+}
+
+.react-datepicker__day--outside-month {
+  color: #9ca3af;
+}
+
+/* Year and month selector styles */
+.datepicker-select {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  color: #1f2937;
+  background-color: #ffffff;
+  transition: all 0.15s ease-in-out;
+}
+
+.datepicker-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* Helper text and error message styles */
+.date-picker-helper {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.date-picker-error {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #ef4444;
+}
+
+/* Clear button styles */
+.date-picker-clear {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #3b82f6;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out;
+}
+
+.date-picker-clear:hover {
+  color: #2563eb;
+}
+
+.ps-menu-button {
+  transition-property: background-color, color; /* Properties to animate */
+  transition-duration: 200ms;        /* Animation duration */
+  transition-timing-function: ease-in-out; /* Animation timing (optional) */
+}
+
+.hover-animation {
+  transition-property: background-color, color; /* Properties to animate */
+  transition-duration: 200ms;        /* Animation duration */
+  transition-timing-function: ease-in-out; /* Animation timing (optional) */
+}
+/* Target the horizontal scrollbar */
+::-webkit-scrollbar {
+  height: 6px; /* Smaller height for horizontal scrollbar */
+}
+
+.cursor-col-resize {
+  cursor: ew-resize;
+  background-color: rgba(0, 0, 0, 0.1); /* Light grey line */
+  width: 8px;
+}
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+.fc-day-today {
+ @apply !bg-cyan-400 !text-white
+}
+
+.fc-prevMonth-button,
+.fc-nextMonth-button,
+.fc-todayButton-button {
+  @apply !bg-cyan-400 !border-none !mx-1 focus:!border-transparent focus:!ring-0 shadow-md text-white rounded p-10 font-bold
+}
+
+.fc-dayGridMonth-button,
+.fc-timeGridWeek-button,
+.fc-timeGridDay-button {
+  @apply !bg-cyan-400 !border-none !mx-1 focus:!border-transparent focus:!ring-0 shadow-md text-white rounded p-10 font-bold
+}
+

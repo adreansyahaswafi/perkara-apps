@@ -1,0 +1,27 @@
+import { useEffect } from "react";
+import { useToast } from "../../../components/ToastComponent";
+import useFetchEngine from "../../../hooks/useFetch";
+
+const useDetailData = ({ id }) => {
+    const { show } = useToast();
+    const { setparams, error, data, loading, params: isParams } = useFetchEngine({
+        url: `api/tahanan/register-tahanan/${id}`,
+    })
+    useEffect(() => {
+        setparams({});
+    }, []);
+    useEffect(() => {
+        if (error) {
+            show({ severity: 'error', summary: 'Error Message', detail: error?.message });
+        }
+    }, [error])
+    
+    return {
+        setparams,
+        error,
+        data,
+        params: isParams,
+        loading
+    }
+}
+export default useDetailData;
