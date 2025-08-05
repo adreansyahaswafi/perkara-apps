@@ -63,8 +63,8 @@ const Detail = ({ title }) => {
     }
 
     const Section = ({ title, onEdit, children }) => (
-        <div className="rounded-md relative mt-8 text-base shadow-lg px-6 pt-10 pb-5 border-t-2 border-t-red-400">
-            <h2 className="text-xl absolute top-[-1.5rem] bg-red-400 p-2 font-bold text-white px-4">{title}</h2>
+        <div className="rounded-md relative mt-8 text-base shadow-lg px-6 pt-10 pb-5 border-t-2 border-t-blue-400">
+            <h2 className="text-xl absolute top-[-1.5rem] bg-blue-400 p-2 font-bold text-white px-4">{title}</h2>
             <div className="flex flex-col gap-1">{children}</div>
             <div className="flex justify-end mt-4">
                 <button

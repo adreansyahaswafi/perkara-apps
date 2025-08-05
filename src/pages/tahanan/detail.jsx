@@ -71,8 +71,8 @@ const Detail = ({ title }) => {
                 <Breadcrumb items={breadcrumbItems} />
             </div>
 
-            <div className="rounded-md relative mt-8 text-base shadow-lg p-6 border-t-2 border-t-red-400">
-                <h2 className="text-xl flex gap-2 absolute top-[-1.5rem] bg-red-400 w-sm p-2 font-bold text-white px-4">Informasi Tahanan</h2>
+            <div className="rounded-md relative mt-8 text-base shadow-lg p-6 border-t-2 border-t-blue-400">
+                <h2 className="text-xl flex gap-2 absolute top-[-1.5rem] bg-blue-400 w-sm p-2 font-bold text-white px-4">Informasi Tahanan</h2>
                 <div className="flex flex-col gap-2">
                     {infoItem("Nama Tahanan", tahanan?.nama_tahanan)}
                     {infoItem("Umur", `${tahanan?.umur || '-'} Tahun`)}

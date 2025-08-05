@@ -77,7 +77,7 @@ const User = ({ title }) => {
                     <Breadcrumb items={breadcrumbItems} />
                 </div>
                 <div className="text-sm flex flex-col gap-4">
-                    <div className="bg-white flex justify-between border-t-3 border-t-red-400 rounded-md border-1 shadow-sm p-5 relative border-gray-200">
+                    <div className="bg-white flex justify-between border-t-3 border-t-blue-400 rounded-md border-1 shadow-sm p-5 relative border-gray-200">
                         <div className="grid grid-cols-3 gap-4">
                             <div className="w-[20rem]">
                                 <Input

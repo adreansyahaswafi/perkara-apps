@@ -29,7 +29,7 @@ const Header = () => {
         // removeToken()
     }
     return (
-        <header className="bg-red-600 flex justify-between items-center border-b-1 border-gray-200 shadow-2xl text-white pl-4 h-[4rem]">
+        <header className="animate-gradient bg-gradient-to-r from-cyan-500 via-gray-700 to-blue-400 bg-[length:100%_500%] flex justify-between items-center border-b-1 border-gray-200 shadow-2xl text-white pl-4 h-[4rem]">
             <div className="flex justify-between items-center">
                 <div onClick={() => {
                     setopen(!open)
@@ -66,18 +66,18 @@ const Header = () => {
                         <ChevronDownIcon className={`h-[16px] text-white font-bold transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                     </div>
                     <div className={`absolute z-[1000] gap-2 flex flex-col top-12 pb-2 border-1 border-gray-200 right-0 w-md shadow-md rounded-md bg-white transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-                        <div className='flex bg-red-600 px-3 rounded-t-md items-center pb-2 flex-col justify-center'>
+                        <div className='flex bg-blue-400 px-3 rounded-t-md items-center pb-2 flex-col justify-center'>
                             <UserCircleIcon className='h-28 text-white' />
                             <span className='text-base text-center font-bold text-white'>{data?.email}</span>
                             {/* <span className='text-xs text-center font-bold text-white'>{data?.workingUnit}</span>
                             <span className='text-xs text-center font-bold text-white'>{data?.specialization}</span> */}
                         </div>
                         <div className='flex py-1 justify-between bg-white gap-2 px-4'>
-                            <Link to={`/user/${data?._id}/edit`} className='text-base justify-center border w-[50%] rounded-md border-gray-200 hover-animation items-center cursor-pointer flex gap-2 px-3 py-3 text-gray-500 font-semibold hover:bg-red-400 hover:text-white'>
+                            <Link to={`/user/${data?._id}/edit`} className='text-base justify-center border w-[50%] rounded-md border-gray-200 hover-animation items-center cursor-pointer flex gap-2 px-3 py-3 text-gray-500 font-semibold hover:bg-blue-400 hover:text-white'>
                                 <UserIcon className='h-[16px]' />
                                 Account
                             </Link>
-                            <div onClick={handleLogout} className='text-base justify-center border w-[50%] rounded-md border-gray-200 hover-animation items-center cursor-pointer flex gap-2 px-3 py-3 text-gray-500 font-semibold hover:bg-red-400 hover:text-white'>
+                            <div onClick={handleLogout} className='text-base justify-center border w-[50%] rounded-md border-gray-200 hover-animation items-center cursor-pointer flex gap-2 px-3 py-3 text-gray-500 font-semibold hover:bg-blue-400 hover:text-white'>
                                 <ArrowLeftStartOnRectangleIcon className='h-[16px]' />
                                 Sign Out
                             </div>

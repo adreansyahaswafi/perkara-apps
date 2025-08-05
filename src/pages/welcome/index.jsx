@@ -14,7 +14,7 @@ const WelcomePage = () => {
     return (
         <div className='w-full flex items-center justify-center bg-white p-4'>
             <div
-                className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-400 to-red-200 rounded-2xl shadow-2xl w-full max-w-2xl h-80 flex items-center justify-center p-8 transition-all duration-700 hover:shadow-blue-500/20"
+                className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-400 to-blue-200 rounded-2xl shadow-2xl w-full max-w-2xl h-80 flex items-center justify-center p-8 transition-all duration-700 hover:shadow-blue-500/20"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >

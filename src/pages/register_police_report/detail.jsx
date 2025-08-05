@@ -36,8 +36,8 @@ const Detail = ({ title }) => {
                 <h1 className="text-3xl font-bold">{title}</h1>
                 <Breadcrumb items={breadcrumbItems} />
             </div>
-            <div className="rounded-md relative mt-8 text-base shadow-lg p-6 border-t-2 border-t-red-400">
-                <h2 className="text-xl absolute top-[-1.5rem] bg-red-400 w-sm p-2 font-bold text-white px-4">Informasi Laporan Polisi</h2>
+            <div className="rounded-md relative mt-8 text-base shadow-lg p-6 border-t-2 border-t-blue-400">
+                <h2 className="text-xl absolute top-[-1.5rem] bg-blue-400 w-sm p-2 font-bold text-white px-4">Informasi Laporan Polisi</h2>
                 <div className="flex my-2 gap-2">
                     <div className="w-52 font-semibold">No. Laporan</div>
                     <div>:</div>

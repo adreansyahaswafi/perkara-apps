@@ -267,7 +267,7 @@ const Table = ({
     };
 
     return (
-        <div className="border border-t-3 border-t-red-400 border-gray-300 rounded-lg shadow-sm">
+        <div className="border border-t-3 border-t-blue-400 border-gray-300 rounded-lg shadow-sm">
             <table ref={tableRef} className="w-full">
                 <thead className="bg-gray-100 border-b border-gray-300">
                     <tr>

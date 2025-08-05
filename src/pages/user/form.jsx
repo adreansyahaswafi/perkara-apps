@@ -77,8 +77,8 @@ const Form = ({ title }) => {
             </div>
             <FormProvider onSubmit={onSubmit} defaultValues={defaultValue} className="flex flex-col gap-2 my-4">
                 {id && <IsEdited id={id} />}
-                <div className="shadow-lg relative my-8 border-t-red-400 border-t-2 rounded-sm p-6 bg-white">
-                    <h2 className="text-xl absolute top-[-1.5rem] bg-red-400 w-sm p-2 font-bold text-white px-4">Form User</h2>
+                <div className="shadow-lg relative my-8 border-t-blue-400 border-t-2 rounded-sm p-6 bg-white">
+                    <h2 className="text-xl absolute top-[-1.5rem] bg-blue-400 w-sm p-2 font-bold text-white px-4">Form User</h2>
                     <div className="grid grid-cols-3">
                         <div className="flex gap-1 flex-col items-center justify-center">
                             <ImagesUploadedShow id={id} />
