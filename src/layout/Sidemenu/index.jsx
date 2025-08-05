@@ -61,7 +61,7 @@ const Sidemenu = () => {
                     {/* <img src={logo} className='w-32 h-32' alt='background' /> */}
                     <ShieldCheckIcon className="w-32 h-32 text-white" />
 
-                    <div className='text-sm font-bold text-white'><span>SI</span><span className='text-sm font-bold text-transparent'>PIDTER</span></div>
+                    <div className='text-sm font-bold text-white'><span>SI</span><span className='text-sm font-bold text-white'>PIDTER</span></div>
                 </div>
                 {
                     result?.map((item, index) => {
