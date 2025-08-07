@@ -13,7 +13,7 @@ import { id } from 'date-fns/locale';
 import Modal from "../../components/Modal";
 import { useState } from "react";
 
-const User = ({ title }) => {
+const User = ({ title, level }) => {
     const breadcrumbItems = [
         { label: 'Laporan Polisi', href: '/laporan-polisi' },
     ];
@@ -74,6 +74,7 @@ const User = ({ title }) => {
             },
             {
                 key: '-', title: 'Aksi',
+                level,
                 onSort: sort => setparams(prev => ({ ...prev, sort })),
                 render: (_, row) => (
                     <button onClick={() => {
@@ -81,7 +82,7 @@ const User = ({ title }) => {
                     }} type="button" className="bg-red-400 cursor-pointer p-2 text-center text-white text-sm rounded-sm items-center flex gap-1"><TrashIcon className="h-4 text-white text-sm" />Hapus</button>
                 )
             },
-        ]
+        ].filter(item => item?.level !== level)
     }
     return (
         <Form defaultValues={defaultValue}>
@@ -108,13 +109,13 @@ const User = ({ title }) => {
                             </div>
                         </div>
                         <div className="flex justify-end">
-                            <Link
+                            {level === 'master' && <Link
                                 to="/laporan-polisi/create"
                                 className={`p-2 px-6 bg-blue-400 flex items-center gap-2 cursor-pointer rounded-md text-base text-white hover:bg-blue-500 hover:text-white`}
                             >
                                 <PlusCircleIcon className="h-8" />
                                 <span>Tambah</span>
-                            </Link>
+                            </Link>}
                         </div>
                     </div>
                     <Table

@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useDetailData from "./hooks-integration/useDetailData";
 import usePutData from "./hooks-integration/usePutData";
+import SelectField from "../../components/HooksForm/Select";
 
 const currentDate = () => {
     // Use current date
@@ -43,6 +44,7 @@ const Form = ({ title }) => {
         email: "",
         password: "",
         images: null,
+        level: "",
         jabatan: "",
         phone: "",
         terdaftar: id ? "" : new Date().toISOString()
@@ -55,6 +57,7 @@ const Form = ({ title }) => {
         formData.append('jabatan', data?.jabatan);
         formData.append('phone', data?.phone);
         formData.append('createdDate', data?.terdaftar);
+        formData.append('level', data?.level);
         formData.append('images', data?.images);
         if (id) {
             setBodyUpdate(formData);
@@ -115,6 +118,22 @@ const Form = ({ title }) => {
                             <div className="leading-0 flex flex-col gap-2">
                                 <label className="text-base font-medium text-gray-600">Jabatan</label>
                                 <Input validation={["required"]} name="jabatan" className="text-sm px-3" placeholder="Jabatan..." />
+                            </div>
+                            <div className="leading-0 flex flex-col gap-2">
+                                <label className="text-base font-medium text-gray-600">Hak Akses</label>
+                                <SelectField
+                                    validation={["required"]}
+                                    name="level"
+                                    className="text-sm px-3"
+                                    placeholder="Level..."
+                                    options={[{
+                                        label: "Admin",
+                                        value: "admin"
+                                    }, {
+                                        label: "Viewer",
+                                        value: "viewer"
+                                    }]}
+                                />
                             </div>
                             <div className="leading-0 flex flex-col gap-2">
                                 <label className="text-base font-medium text-gray-600">No. Telpon</label>
@@ -220,6 +239,7 @@ export const ImagesUploadedShow = ({ id }) => {
 
 export const IsEdited = ({ id }) => {
     const { data, loading } = useDetailData({ id });
+    console.log(data)
     const { setValue } = useFormContext();
     useEffect(() => {
         if (loading === 'resolved') {
@@ -228,6 +248,7 @@ export const IsEdited = ({ id }) => {
             setValue('jabatan', data?.data?.content?.jabatan);
             setValue('phone', data?.data?.content?.phone);
             setValue('images', data?.data?.content?.images);
+            setValue('level', data?.data?.content?.level);
             setValue('preview', data?.data?.content?.createdDate);
         }
     }, [data, loading]);

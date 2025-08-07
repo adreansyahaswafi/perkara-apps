@@ -2,7 +2,7 @@ import Form from '../../components/HooksForm/Form';
 import Input from '../../components/HooksForm/Input';
 import { Link, Navigate } from 'react-router-dom';
 import useLogin from './hooks-integration/useLogin';
-import { ArrowRightStartOnRectangleIcon, EnvelopeIcon, LockClosedIcon, ShieldCheckIcon, StarIcon } from '@heroicons/react/24/outline';
+import { ArrowRightStartOnRectangleIcon, EnvelopeIcon, LockClosedIcon, StarIcon } from '@heroicons/react/24/outline';
 
 const LoginPage = () => {
     // const [open, setopen] = useState(false);
@@ -53,20 +53,26 @@ const LoginPage = () => {
                     <div className="text-center mb-8 animate-fade-in">
                         <div className="relative inline-block">
                             <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
-                            <div className="relative bg-gradient-to-br from-blue-500 to-indigo-600 p-6 rounded-full shadow-2xl">
+                            {/* <div className="relative bg-gradient-to-br from-blue-500 to-indigo-600 p-6 rounded-full shadow-2xl">
                                 <ShieldCheckIcon className="w-12 h-12 text-white" />
+                            </div> */}
+                            <div className="relative mb-4">
+                                {/* Logo Circle */}
+                                <div className="w-44 h-44 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                                    <div className="text-center">
+                                        <h1 className="text-white text-3xl font-bold tracking-wider">
+                                            SIPIDTER
+                                        </h1>
+                                        <div className="w-36 h-1 bg-white mx-auto rounded-sm scale-x-[-1]" style={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 0% 0%)' }}></div>
+                                    </div>
+                                </div>
+
+                                {/* Shadow */}
+                                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-56 h-6 bg-black opacity-10 rounded-full blur-sm"></div>
                             </div>
-                        </div>
-                        <h1 className="text-4xl font-bold text-white mt-6 mb-2">
-                            <span className="bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
-                                SI
-                            </span>
-                            <span className="bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">
-                                PIDTER
-                            </span>
-                        </h1>
+                        </div>                       
                         <p className="text-blue-200 text-sm font-medium">
-                            Sistem Informasi Pidana Siber
+                            Sistem Informasi Tindak Pidana Tertentu  Ditreskrimsus Polda Metro Jaya
                         </p>
                         <div className="mt-2 flex justify-center space-x-1">
                             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>

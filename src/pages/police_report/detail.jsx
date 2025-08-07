@@ -6,7 +6,7 @@ import { id as idDate } from 'date-fns/locale';
 import { useEffect, useState } from "react";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 
-const Detail = ({ title }) => {
+const Detail = ({ title, level }) => {
     const breadcrumbItems = [
         { label: 'Laporan Polisi', href: '/laporan-polisi' },
         { label: 'Detail Laporan Polisi' },
@@ -121,12 +121,6 @@ const Detail = ({ title }) => {
                 </div>
 
                 <div className="flex my-2 gap-2">
-                    <div className="w-52 font-semibold">Perkembangan</div>
-                    <div>:</div>
-                    <div className="flex-1 ">{data?.data?.content?.perkembangan}</div>
-                </div>
-
-                <div className="flex my-2 gap-2">
                     <div className="w-52 font-semibold">Keterangan</div>
                     <div>:</div>
                     <div className="flex-1 whitespace-pre-wrap">{data?.data?.content?.keterangan}</div>
@@ -137,8 +131,30 @@ const Detail = ({ title }) => {
                     <div>:</div>
                     <div className="flex-1 capitalize">{data?.data?.content?.status}</div>
                 </div>
+                <div className="flex flex-col my-2 gap-2 mt-6">
+                    <div className="border border-gray-300 relative rounded-md px-4 p-2">
+                        <div className="font-semibold bg-blue-400 absolute top-[-1rem] p-1 px-2 rounded-md text-white">Perkembangan</div>
+                        <div className="flex my-2 gap-2">
+                            <div className="w-52 font-semibold">Tanggal Update</div>
+                            <div>:</div>
+                            <div className="flex-1 ">{data?.data?.content?.tanggal_update}</div>
+                        </div>
+
+                        <div className="flex my-2 gap-2">
+                            <div className="w-52 font-semibold">Pic</div>
+                            <div>:</div>
+                            <div className="flex-1 ">{data?.data?.content?.pic}</div>
+                        </div>
+
+                        <div className="flex my-2 gap-2">
+                            <div className="w-52 font-semibold">Status Perkembangan</div>
+                            <div>:</div>
+                            <div className="flex-1 ">{data?.data?.content?.perkembangan}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="flex justify-end">
+            {['master', 'admin'].includes(level) && <div className="flex justify-end">
                 <Link
                     to={`/laporan-polisi/${id}/edit`}
                     className={`p-2 px-6 bg-green-600 flex items-center gap-2 cursor-pointer rounded-md text-base text-white hover:bg-green-700 hover:text-white`}
@@ -146,7 +162,7 @@ const Detail = ({ title }) => {
                     <PencilSquareIcon className="h-6" />
                     <span>Edit</span>
                 </Link>
-            </div>
+            </div>}
         </div>
     )
 };

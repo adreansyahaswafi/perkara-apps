@@ -22,13 +22,17 @@ const ReportAccountPolice = Loadable(React.lazy(() => import('../pages/register_
 const ReportAccountPoliceCreate = Loadable(React.lazy(() => import('../pages/register_police_report/form')));
 const ReportAccountPoliceDetail = Loadable(React.lazy(() => import('../pages/register_police_report/detail')));
 
-const PoliceCrime = Loadable(React.lazy(() => import('../pages/kejahatan')));
-const PoliceCrimeCreate = Loadable(React.lazy(() => import('../pages/kejahatan/form')));
-const PoliceCrimeDetail = Loadable(React.lazy(() => import('../pages/kejahatan/detail')));
+const PustakaPolice = Loadable(React.lazy(() => import('../pages/pustaka')));
+const PustakaPoliceCreate = Loadable(React.lazy(() => import('../pages/pustaka/form')));
+const PustakaPoliceDetail = Loadable(React.lazy(() => import('../pages/pustaka/detail')));
 
-const TahananPolice = Loadable(React.lazy(() => import('../pages/tahanan')));
-const TahananPoliceCreate = Loadable(React.lazy(() => import('../pages/tahanan/form')));
-const TahananPoliceDetail = Loadable(React.lazy(() => import('../pages/tahanan/detail')));
+// const PoliceCrime = Loadable(React.lazy(() => import('../pages/kejahatan')));
+// const PoliceCrimeCreate = Loadable(React.lazy(() => import('../pages/kejahatan/form')));
+// const PoliceCrimeDetail = Loadable(React.lazy(() => import('../pages/kejahatan/detail')));
+
+// const TahananPolice = Loadable(React.lazy(() => import('../pages/tahanan')));
+// const TahananPoliceCreate = Loadable(React.lazy(() => import('../pages/tahanan/form')));
+// const TahananPoliceDetail = Loadable(React.lazy(() => import('../pages/tahanan/detail')));
 
 const Error = Loadable(React.lazy(() => import('../pages/error')));
 
@@ -58,15 +62,20 @@ const privateRoute = [
     { exact: true, path: '/register-laporan-polisi/:id', name: GenerateTitle('Detail Register Laporan Polisi'), component: ReportAccountPoliceDetail, access: "register-laporan", action: 'read' },
     { exact: true, path: '/register-laporan-polisi/:id/edit', name: GenerateTitle('Edit Register Laporan Polisi'), component: ReportAccountPoliceCreate, access: "register-laporan", action: 'read' },
 
-    { exact: true, path: '/kejahatan', name: GenerateTitle('Kejahatan/Pelanggaran'), component: PoliceCrime, access: "kejahatan", action: 'read' },
-    { exact: true, path: '/kejahatan/create', name: GenerateTitle('Buat Kejahatan/Pelanggaran'), component: PoliceCrimeCreate, access: "kejahatan", action: 'read' },
-    { exact: true, path: '/kejahatan/:id', name: GenerateTitle('Detail Kejahatan/Pelanggaran'), component: PoliceCrimeDetail, access: "kejahatan", action: 'read' },
-    { exact: true, path: '/kejahatan/:id/edit', name: GenerateTitle('Edit Kejahatan/Pelanggaran'), component: PoliceCrimeCreate, access: "kejahatan", action: 'read' },
+    { exact: true, path: '/pustaka', name: GenerateTitle('Pustaka Pasal'), component:PustakaPolice, access: "register-laporan", action: 'read' },
+    { exact: true, path: '/pustaka/create', name: GenerateTitle('Buat Pustaka Pasal'), component:PustakaPoliceCreate, access: "register-laporan", action: 'read' },
+    { exact: true, path: '/pustaka/:id', name: GenerateTitle('Detail Pustaka Pasal'), component:PustakaPoliceDetail, access: "register-laporan", action: 'read' },
+    { exact: true, path: '/pustaka/:id/edit', name: GenerateTitle('Edit Pustaka Pasal'), component:PustakaPoliceCreate, access: "register-laporan", action: 'read' },
 
-    { exact: true, path: '/tahanan', name: GenerateTitle('Tahanan'), component: TahananPolice, access: "tahanan", action: 'read' },
-    { exact: true, path: '/tahanan/create', name: GenerateTitle('Buat Tahanan'), component: TahananPoliceCreate, access: "tahanan", action: 'read' },
-    { exact: true, path: '/tahanan/:id', name: GenerateTitle('Detail Tahanan'), component: TahananPoliceDetail, access: "tahanan", action: 'read' },
-    { exact: true, path: '/tahanan/:id/edit', name: GenerateTitle('Edit Tahanan'), component: TahananPoliceCreate, access: "tahanan", action: 'read' },
+    // { exact: true, path: '/kejahatan', name: GenerateTitle('Kejahatan/Pelanggaran'), component: PoliceCrime, access: "kejahatan", action: 'read' },
+    // { exact: true, path: '/kejahatan/create', name: GenerateTitle('Buat Kejahatan/Pelanggaran'), component: PoliceCrimeCreate, access: "kejahatan", action: 'read' },
+    // { exact: true, path: '/kejahatan/:id', name: GenerateTitle('Detail Kejahatan/Pelanggaran'), component: PoliceCrimeDetail, access: "kejahatan", action: 'read' },
+    // { exact: true, path: '/kejahatan/:id/edit', name: GenerateTitle('Edit Kejahatan/Pelanggaran'), component: PoliceCrimeCreate, access: "kejahatan", action: 'read' },
+
+    // { exact: true, path: '/tahanan', name: GenerateTitle('Tahanan'), component: TahananPolice, access: "tahanan", action: 'read' },
+    // { exact: true, path: '/tahanan/create', name: GenerateTitle('Buat Tahanan'), component: TahananPoliceCreate, access: "tahanan", action: 'read' },
+    // { exact: true, path: '/tahanan/:id', name: GenerateTitle('Detail Tahanan'), component: TahananPoliceDetail, access: "tahanan", action: 'read' },
+    // { exact: true, path: '/tahanan/:id/edit', name: GenerateTitle('Edit Tahanan'), component: TahananPoliceCreate, access: "tahanan", action: 'read' },
 
     // { exact: true, path: '/operation-oc-137', name: GenerateTitle('OC 137'), component: Oc137, access: "oc-137", action: 'read' },
 

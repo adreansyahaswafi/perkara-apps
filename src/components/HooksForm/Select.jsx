@@ -65,9 +65,9 @@ const SelectField = ({
                                     } text-gray-500 border-gray-200 rounded-md border border-gray-300 rounded shadow-sm transition-all duration-300 focus:outline-none`
                                 ),
                                 listItem: ({ isSelected }) => (
-                                    `block text-sm transition my-1 text-left duration-200 py-2 cursor-pointer select-none truncate rounded ${isSelected
-                                        ? `text-white bg-red-400`
-                                        : `text-gray-500 hover:bg-red-400 hover:text-white`
+                                    `block px-4 text-sm transition my-1 text-left duration-200 py-2 cursor-pointer select-none truncate rounded ${isSelected
+                                        ? `text-white bg-blue-400`
+                                        : `text-gray-500 hover:bg-blue-400 hover:text-white`
                                     }`
                                 ),
                             }}

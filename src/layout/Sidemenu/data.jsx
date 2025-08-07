@@ -1,5 +1,5 @@
-import { TableCellsIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
-import { BriefcaseIcon, BuildingLibraryIcon, ClipboardDocumentCheckIcon, HandRaisedIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { BookOpenIcon, TableCellsIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
+import { BriefcaseIcon, ClipboardDocumentCheckIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
 const data = [{
     name: "Beranda",
     parent: 0,
@@ -22,18 +22,11 @@ const data = [{
     link: '/register-laporan-polisi',
     childrens: null
 }, {
-    name: "Kejahatan/Pelanggaran",
+    name: "Library Pasal",
     parent: 0,
-    icon: <HandRaisedIcon className='h-[20px] font-bold ' />,
-    code: 'kejahatan',
-    link: '/kejahatan',
-    childrens: null
-}, {
-    name: "Register Tahanan",
-    parent: 0,
-    icon: <BuildingLibraryIcon className='h-[20px] font-bold ' />,
-    code: 'tahanan',
-    link: '/tahanan',
+    icon: <BookOpenIcon className='h-[20px] font-bold ' />,
+    code: 'pustaka',
+    link: '/pustaka',
     childrens: null
 }, {
     name: "User",
@@ -43,6 +36,23 @@ const data = [{
     link: '/user',
     childrens: null
 }];
+
+
+// {
+//     name: "Kejahatan/Pelanggaran",
+//     parent: 0,
+//     icon: <HandRaisedIcon className='h-[20px] font-bold ' />,
+//     code: 'kejahatan',
+//     link: '/kejahatan',
+//     childrens: null
+// }, {
+//     name: "Register Tahanan",
+//     parent: 0,
+//     icon: <BuildingLibraryIcon className='h-[20px] font-bold ' />,
+//     code: 'tahanan',
+//     link: '/tahanan',
+//     childrens: null
+// }, 
 
 const isParent = [{
     parent: 0,

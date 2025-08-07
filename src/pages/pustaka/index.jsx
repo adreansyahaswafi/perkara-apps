@@ -1,21 +1,18 @@
-import { MagnifyingGlassIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
+import { ArchiveBoxArrowDownIcon, MagnifyingGlassIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 import Breadcrumb from "../../components/BreadCrumbs";
 import Table from "../../components/Datatable";
 import Form from "../../components/HooksForm/Form";
 import Input from "../../components/HooksForm/Input";
 import Pagination from "../../components/Pagination";
 import useListData from "./hooks-integration/useListData";
-import useDeleteData from "./hooks-integration/useDeleteData";
-import { TrashIcon, XCircleIcon } from "@heroicons/react/24/solid";
+import { XCircleIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
-import { format } from 'date-fns';
-import { id } from 'date-fns/locale';
 import Modal from "../../components/Modal";
 import { useState } from "react";
 
 const User = ({ title, level }) => {
     const breadcrumbItems = [
-        { label: 'Register Laporan Polisi', href: '/register-laporan-polisi' },
+        { label: 'Pustaka Pasal', href: '/pustaka' },
     ];
     const defaultValue = {
         perPage: 10,
@@ -26,49 +23,32 @@ const User = ({ title, level }) => {
     }
     const { data, loading, params, setparams } = useListData({ params: defaultValue });
     const [pased, setpassed] = useState(null);
-    const { postData } = useDeleteData();
-    const handleDelete = () => {
-        postData({ id: pased });
-        setpassed(null);
-        setparams(defaultValue);
-    }
     const TableConfiguration = {
         columns: [
             {
-                key: 'no_laporan', title: 'No. LP',
+                key: 'nama_peraturan', title: 'Nama Peraturan',
                 onSort: sort => setparams(prev => ({ ...prev, sort })),
-                render: (value, row) => <Link className="text-blue-400" to={`/register-laporan-polisi/${row?._id}`}>{value ?? "-"}</Link>
+                render: (value, row) => <Link className="text-blue-400" to={`/pustaka/${row?._id}`}>{value ?? "-"}</Link>
             },
             {
-                key: 'tanggal_laporan', title: 'Tanggal',
+                key: 'jenis_peraturan', title: 'Jenis Peraturan',
                 onSort: sort => setparams(prev => ({ ...prev, sort })),
-                render: (value) => {
-                    const tanggal = new Date(value);
-                    const hasil = format(tanggal, "EEEE, dd MMMM yyyy | hh:mm", { locale: id });
-                    return hasil ?? "-"
-                }
+                render: (value) => value ? value + " Tahun" : "-"
+
             },
             {
-                key: 'pelapor', title: 'Nama Pelapor',
+                key: 'tahun_peraturan', title: 'Tahun',
                 onSort: sort => setparams(prev => ({ ...prev, sort })),
                 render: (value) => value ?? "-"
             },
             {
-                key: 'umur_pelapor', title: 'Umur',
+                key: 'link_pdf', title: 'File',
                 onSort: sort => setparams(prev => ({ ...prev, sort })),
-                render: (value) => value ? value + " Tahun" : "-"
-            },
-            {
-                key: '-', title: 'Aksi',
-                level,
-                onSort: sort => setparams(prev => ({ ...prev, sort })),
-                render: (_, row) => (
-                    <button onClick={() => {
-                        setpassed(row?._id)
-                    }} type="button" className="bg-red-400 cursor-pointer p-2 text-center text-white text-sm rounded-sm items-center flex gap-1"><TrashIcon className="h-4 text-white text-sm" />Hapus</button>
+                render: (value) => (
+                    <button onClick={() => { setpassed(value) }} type="button" className="bg-blue-400 cursor-pointer text-white flex gap-1 items-center p-2 rounded-md"><ArchiveBoxArrowDownIcon className="h-5" /> Preview</button>
                 )
-            },
-        ].filter(item => item?.level !== level)
+            }
+        ]
     }
     return (
         <Form defaultValues={defaultValue}>
@@ -96,7 +76,7 @@ const User = ({ title, level }) => {
                         </div>
                         {level === 'master' && <div className="flex justify-end">
                             <Link
-                                to="/register-laporan-polisi/create"
+                                to="/pustaka/create"
                                 className={`p-2 px-6 bg-blue-400 flex items-center gap-2 cursor-pointer rounded-md text-base text-white hover:bg-blue-500 hover:text-white`}
                             >
                                 <PlusCircleIcon className="h-8" />
@@ -121,27 +101,24 @@ const User = ({ title, level }) => {
                     </div>
                 </div>
             </div>
-            <Modal isOpen={!!pased} onClose={() => setpassed(null)} title="Konfirmasi">
-                <p className="text-gray-600 text-base">
-                    Apakah anda ingin hapus data ini ?
-                </p>
-                <div className="flex gap-2 mt-4 justify-end">
-                    <button
-                        onClick={() => setpassed(null)}
-                        type="button"
-                        className={`p-1 px-2 bg-blue-400 flex items-center gap-1 cursor-pointer rounded-md text-sm text-white hover:bg-blue-500 hover:text-white`}
-                    >
-                        <XCircleIcon className="h-5" />
-                        <span>Tidak</span>
-                    </button>
-                    <button
-                        onClick={handleDelete}
-                        type="button"
-                        className={`p-2 px-2 bg-red-400 flex items-center gap-1 cursor-pointer rounded-md text-sm text-white hover:bg-red-500 hover:text-white`}
-                    >
-                        <TrashIcon className="h-5" />
-                        <span>Hapus</span>
-                    </button>
+            <Modal size="xl" isOpen={!!pased} onClose={() => setpassed(null)} title="Konfirmasi">
+                <div className="flex flex-col gap-2 mt-4 justify-end">
+                    <iframe
+                        src={`${import.meta.env.VITE_API_URL}uploads/${pased}`}
+                        width="100%"
+                        height="600px"
+                        title="Preview PDF"
+                    />
+                    <div className="flex justify-end">
+                        <button
+                            onClick={() => setpassed(null)}
+                            type="button"
+                            className={`p-3 px-4 bg-blue-400 flex items-center gap-1 cursor-pointer rounded-md text-base text-white hover:bg-blue-500 hover:text-white`}
+                        >
+                            <XCircleIcon className="h-5" />
+                            <span>Tutup</span>
+                        </button>
+                    </div>
                 </div>
             </Modal>
         </Form>

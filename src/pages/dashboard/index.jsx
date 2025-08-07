@@ -1,6 +1,6 @@
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import Breadcrumb from "../../components/BreadCrumbs";
-import { BriefcaseIcon, BuildingLibraryIcon, ClipboardDocumentCheckIcon, HandRaisedIcon } from "@heroicons/react/24/solid";
+import { BookOpenIcon, BriefcaseIcon, ClipboardDocumentCheckIcon } from "@heroicons/react/24/solid";
 import useDashboard from "./hooks-integration/useDashboard";
 import Spinner from "../../components/Spinner";
 
@@ -16,7 +16,7 @@ const Dashboard = () => {
                 <h1 className="text-3xl font-bold">Beranda</h1>
                 <Breadcrumb items={breadcrumbItems} />
             </div>
-            <div className="pt-8 grid grid-cols-4 gap-4">
+            <div className="pt-8 grid grid-cols-3 gap-4">
                 <div className="relative cursor-pointer flex justify-between border-t-3 border-t-green-600 rounded shadow-md p-5 transform transition-transform hover:scale-105">
                     <div className="absolute top-[-22px]">
                         <div className="bg-green-600 shadow-md p-4 rounded">
@@ -58,33 +58,14 @@ const Dashboard = () => {
                 <div className="relative cursor-pointer flex justify-between border-t-3 border-t-red-500 rounded shadow-md p-5 transform transition-transform hover:scale-105">
                     <div className="absolute top-[-22px]">
                         <div className="bg-red-500 shadow-md p-4 rounded">
-                            <HandRaisedIcon className="h-12 text-white" />
+                            <BookOpenIcon className="h-12 text-white" />
                         </div>
                     </div>
                     <div className="flex flex-col w-full justify-end gap-4">
-                        <div className="text-base text-neutral-500 font-normal text-end ">Kejahatan/Pelanggaran</div>
+                        <div className="text-base text-neutral-500 font-normal text-end ">Library</div>
                         <div className="flex justify-between">
                             <div className="text-2xl text-end font-semibold text-neutral-600"> Total</div>
-                            <div className="text-2xl text-end font-bold">{loading === "resolved" ? dashboard?.total_kejahatan : <Spinner color="text-red-500" />}</div>
-                        </div>
-                        <div className="border-t-1 border-t-neutral-200 w-full" />
-                        <div className="flex gap-2 items-center">
-                            <ArrowRightCircleIcon className="h-4 text-neutral-400" />
-                            <span className="text-sm text-neutral-400">Selengkapnya</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="relative cursor-pointer flex justify-between border-t-3 border-t-cyan-600 rounded shadow-md p-5 transform transition-transform hover:scale-105">
-                    <div className="absolute top-[-22px]">
-                        <div className="bg-cyan-500   shadow-md p-4 rounded">
-                            <BuildingLibraryIcon className="h-12 text-white" />
-                        </div>
-                    </div>
-                    <div className="flex flex-col w-full justify-end gap-4">
-                        <div className="text-base text-neutral-500 font-normal text-end ">Register Tahanan</div>
-                        <div className="flex justify-between">
-                            <div className="text-2xl text-end font-semibold text-neutral-600"> Total</div>
-                            <div className="text-2xl text-end font-bold">{loading === "resolved" ? dashboard?.total_tahanan : <Spinner color="text-cyan-600" />}</div>
+                            <div className="text-2xl text-end font-bold">{loading === "resolved" ? dashboard?.total_pasal ?? 0 : <Spinner color="text-red-500" />}</div>
                         </div>
                         <div className="border-t-1 border-t-neutral-200 w-full" />
                         <div className="flex gap-2 items-center">

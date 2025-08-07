@@ -7,10 +7,13 @@ const usePutData = ({ id }) => {
     const { show } = useToast();
     const navigate = useNavigate();
     const { setparams, error, data, loading, } = useMutation({
-        url: `/api/reports/update-laporan-polisi/${id}`,
+        url: `/api/pustaka/update-pustaka-pasal/${id}`,
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
         helperDir: () => {
-            show({ severity: 'success', summary: 'Success Message', detail: 'Laporan Polisi berhasil diedit' });
-            navigate(`/laporan-polisi/${id}`);
+            show({ severity: 'success', summary: 'Success Message', detail: 'Pasal berhasil diedit' });
+            navigate(`/pustaka/${id}`);
         }
     })
     const postData = (data) => {
@@ -21,6 +24,7 @@ const usePutData = ({ id }) => {
             show({ severity: 'error', summary: 'Error Message', detail: error?.message });
         }
     }, [error])
+    // console.log(data)
     return {
         postData,
         error,

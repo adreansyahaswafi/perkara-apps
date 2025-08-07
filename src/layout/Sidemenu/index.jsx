@@ -1,9 +1,10 @@
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import { ChevronDownIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
+import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { useContext, useEffect, useState } from 'react';
 import ContextMenu from '../Context';
 import { Link, useLocation } from 'react-router-dom';
 import result from './data';
+import logo_krimsus from '../../assets/images/logo-krimsus.png'
 
 const findItemByCodeWithParents = (data, code, parents = []) => {
     for (const item of data) {
@@ -19,7 +20,7 @@ const findItemByCodeWithParents = (data, code, parents = []) => {
     return null;
 };
 
-const Sidemenu = () => {
+const Sidemenu = ({ level }) => {
     const { open } = useContext(ContextMenu);
     const [openMenu, setOpenMenu] = useState(null);
     const [openMenumultilevel, setOpenMenumultilevel] = useState(null);
@@ -58,17 +59,21 @@ const Sidemenu = () => {
                 <div className='flex-1 animate-gradient bg-gradient-to-r from-blue-400 via-black to-cyan-500 bg-[length:200%_400%] relative justify-center flex flex-col items-center px-4 py-2'>
                     {/* <img src={ribbon} className='w-41 absolute right-[-3rem] scale-y-[-1] rotate-90 ' alt='background' /> */}
                     {/* <img src={ribbon} className='w-41 absolute left-[-3rem] scale-x-[-1] rotate-90 ' alt='background' /> */}
-                    {/* <img src={logo} className='w-32 h-32' alt='background' /> */}
-                    <ShieldCheckIcon className="w-32 h-32 text-white" />
+                    <img src={logo_krimsus} className='w-full' alt='background' />
+                    {/* <ShieldCheckIcon className="w-32 h-32 text-white" /> */}
 
-                    <div className='text-sm font-bold text-white'><span>SI</span><span className='text-sm font-bold text-white'>PIDTER</span></div>
+                    {/* <div className='text-sm font-bold text-white'><span>SI</span><span className='text-sm font-bold text-white'>PIDTER</span></div> */}
                 </div>
                 {
                     result?.map((item, index) => {
+                        const filteredMenu = item?.childrens?.filter(item => {
+                            if (item.code === "user" && !['admin','master'].includes(level)) return false;
+                            return true;
+                        });
                         return (
                             <div key={index}>
                                 <Menu>
-                                    {item?.childrens?.map((itemMenus, indexMenus) => {
+                                    {filteredMenu?.map((itemMenus, indexMenus) => {
                                         return (!itemMenus?.childrens) ? (
                                             <MenuItem
                                                 key={indexMenus}

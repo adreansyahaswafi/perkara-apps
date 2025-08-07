@@ -1,15 +1,13 @@
 import { ArrowLeftStartOnRectangleIcon, Bars3Icon, ChevronDownIcon, UserCircleIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useContext, useEffect, useRef, useState } from 'react';
 import ContextMenu from '../Context';
-import useProfile from './hooks-integration/useProfile';
 import useCustomEvent from '../../hooks/useCustomEvent';
 import { Link } from 'react-router-dom';
 import useLogOut from './hooks-integration/useLogout';
 
-const Header = () => {
+const Header = ({ data }) => {
     const { requestEvents } = useCustomEvent()
     const [isOpen, setIsOpen] = useState(false);
-    const { data } = useProfile();
     const { open, setopen } = useContext(ContextMenu);
     const { postData } = useLogOut();
     const dropdownRef = useRef(null);

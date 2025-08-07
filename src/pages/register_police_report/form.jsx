@@ -11,7 +11,7 @@ import useDetailData from "./hooks-integration/useDetailData";
 import usePutData from "./hooks-integration/usePutData";
 import SelectField from "../../components/HooksForm/Select";
 
-const Form = ({ title }) => {
+const Form = ({ title,level }) => {
     const { id } = useParams();
     const { postData } = usePostData();
     const { postData: PostUpdate } = usePutData({ id });
@@ -49,6 +49,7 @@ const Form = ({ title }) => {
             });
         }
     };
+    if (!['master', 'admin'].includes(level)) return null
     return (
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-3">

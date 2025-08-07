@@ -1,16 +1,13 @@
 import { useEffect } from "react";
 import { useToast } from "../../../components/ToastComponent";
 import useMutation from "../../../hooks/useMutation";
-import { useNavigate } from "react-router-dom";
 
-const usePutData = ({ id }) => {
+const useDeletedData = () => {
     const { show } = useToast();
-    const navigate = useNavigate();
     const { setparams, error, data, loading, } = useMutation({
-        url: `/api/reports/update-laporan-polisi/${id}`,
+        url: `/api/pustaka/delete-pustaka-pasal`,
         helperDir: () => {
-            show({ severity: 'success', summary: 'Success Message', detail: 'Laporan Polisi berhasil diedit' });
-            navigate(`/laporan-polisi/${id}`);
+            show({ severity: 'success', summary: 'Success Message', detail: 'Pasal berhasil dihapus' });
         }
     })
     const postData = (data) => {
@@ -28,4 +25,4 @@ const usePutData = ({ id }) => {
         loading
     }
 }
-export default usePutData;
+export default useDeletedData;

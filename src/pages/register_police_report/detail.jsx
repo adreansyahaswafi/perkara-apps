@@ -6,7 +6,7 @@ import { id as idDate } from 'date-fns/locale';
 import { useEffect, useState } from "react";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 
-const Detail = ({ title }) => {
+const Detail = ({ title, level }) => {
     const breadcrumbItems = [
         { label: 'Register Laporan Polisi', href: '/register-laporan-polisi' },
         { label: 'Detail Laporan Polisi' },
@@ -95,7 +95,7 @@ const Detail = ({ title }) => {
                 </div>
 
             </div>
-            <div className="flex justify-end">
+            {['master', 'admin'].includes(level) && <div className="flex justify-end">
                 <Link
                     to={`/register-laporan-polisi/${id}/edit`}
                     className={`p-2 px-6 bg-green-600 flex items-center gap-2 cursor-pointer rounded-md text-base text-white hover:bg-green-700 hover:text-white`}
@@ -103,7 +103,7 @@ const Detail = ({ title }) => {
                     <PencilSquareIcon className="h-6" />
                     <span>Edit</span>
                 </Link>
-            </div>
+            </div>}
         </div>
     )
 };

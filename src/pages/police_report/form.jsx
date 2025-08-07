@@ -12,8 +12,7 @@ import useDetailData from "./hooks-integration/useDetailData";
 import usePutData from "./hooks-integration/usePutData";
 import { format } from "date-fns";
 
-
-const Form = ({ title }) => {
+const Form = ({ title, level }) => {
     const { id } = useParams();
     const { postData } = usePostData();
     const { postData: PostUpdate } = usePutData({ id });
@@ -31,19 +30,22 @@ const Form = ({ title }) => {
     const defaultValue = {
         "no_laporan": "",
         "pelapor": "",
+        "terlapor": "",
         "lokasi": "",
-        "tanggal_kejadian": null,
-        "tanggal_laporan": null,
+        "tanggal_kejadian": "",
+        "tanggal_laporan": "",
         "pasal": "",
         "barang_bukti": "",
         "tersangka": "",
         "perkembangan": "",
+        "pic": "",
+        "tanggal_update": "",
         "keterangan": "",
         "status": "",
         "umur_pelapor": "",
         "singkat_kejadian": "",
         "alamat_pelapor": "",
-        "petugas_penerima": ""
+        "petugas_penerima": "",
     }
     const onSubmit = (data) => {
         if (id) {
@@ -53,6 +55,7 @@ const Form = ({ title }) => {
             postData(data);
         }
     };
+    if (!['master', 'admin'].includes(level)) return null
     return (
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-3">
@@ -185,16 +188,35 @@ const Form = ({ title }) => {
                                     rows={4}
                                 />
                             </div>
-                            <div className="leading-0 flex flex-col gap-2">
+                            <div className="flex flex-col gap-2">
                                 <label className="text-sm font-medium text-gray-600">Perkembangan</label>
-                                <Textarea
-                                    className="text-sm"
-                                    name="perkembangan"
-                                    placeholder="Perkembangan..."
-                                    validation={["required"]}
-                                    validationMessage={["Keterangan wajib diisi."]}
-                                    rows={4}
-                                />
+                                <div className="flex gap-3 items-center p-8 border border-gray-300 rounded-md">
+                                    <div className="leading-0 flex flex-col gap-2 flex-1">
+                                        <label className="text-sm font-medium text-gray-600">Tanggal Update</label>
+                                        <TanggalUpdate />
+                                    </div>
+                                    <div className="leading-0 flex flex-col gap-2 flex-1">
+                                        <label className="text-sm font-medium text-gray-600">PIC</label>
+                                        <Input
+                                            className="text-sm px-3"
+                                            name="pic"
+                                            placeholder="PIC..."
+                                            validation={["required"]}
+                                            validationMessage={["Keterangan wajib diisi."]}
+                                        />
+                                    </div>
+                                    <div className="leading-0 flex flex-col gap-2 flex-1">
+                                        <label className="text-sm font-medium text-gray-600">Status Perkembangan</label>
+                                        <Input
+                                            className="text-sm px-3"
+                                            name="perkembangan"
+                                            placeholder="Perkembangan..."
+                                            validation={["required"]}
+                                            validationMessage={["Keterangan wajib diisi."]}
+                                            rows={4}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                             <div className="leading-0 flex flex-col gap-2">
                                 <label className="text-sm font-medium text-gray-600">Status</label>
@@ -218,6 +240,26 @@ const Form = ({ title }) => {
         </div>
     )
 };
+
+export const TanggalUpdate = () => {
+    const { setValue } = useFormContext();
+    return (
+        <DatePicker
+            name="tanggal_update"
+            minDate={new Date()}
+            showTimeSelect
+            validation={["required"]}
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            dateFormat="dd/MM/yyyy HH:mm"
+            placeholder="Tanggal/Jam Laporan"
+            onChange={(date) => {
+                const dates = format(new Date(date), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                setValue('tanggal_update', dates);
+            }}
+        />
+    )
+}
 
 export const Dilaporkan = () => {
     const { setValue } = useFormContext();
