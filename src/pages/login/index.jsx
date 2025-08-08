@@ -67,12 +67,9 @@ const LoginPage = () => {
                                     </div>
                                 </div> */}
                             </div>
-                        </div>
-                        <img src={logo_krimsus} className='w-md absolute left-0  top-0 z-50' alt='background' />
-
-
+                        </div>                      
                     </div>
-
+                    <img src={logo_krimsus} className='w-md absolute animate-fade-in left-0  top-0 z-50' alt='background' />
                     {/* Login Form */}
                     <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-white/20 animate-slide-up">
                         <div className='text-center'>
