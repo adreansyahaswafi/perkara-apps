@@ -66,24 +66,28 @@ const LoginPage = () => {
                                         <div className="w-36 h-1 bg-white mx-auto rounded-sm scale-x-[-1]" style={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 0% 0%)' }}></div>
                                     </div>
                                 </div> */}
-                                <img src={logo_krimsus} className='w-full' alt='background' />
                             </div>
-                        </div>                       
-                        <p className="text-blue-200 text-sm font-medium">
-                            Sistem Informasi Tindak Pidana Tertentu
-                        </p>
-                        <p className="text-blue-200 text-sm font-medium">
-                            Ditreskrimsus Polda Metro Jaya
-                        </p>
-                        <div className="mt-2 flex justify-center space-x-1">
-                            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
-                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
-                            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
                         </div>
+                        <img src={logo_krimsus} className='w-md absolute left-0  top-0 z-50' alt='background' />
+
+
                     </div>
 
                     {/* Login Form */}
                     <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-white/20 animate-slide-up">
+                        <div className='text-center'>
+                            <p className="text-blue-200 text-sm font-medium">
+                                Sistem Informasi Tindak Pidana Tertentu
+                            </p>
+                            <p className="text-blue-200 text-sm font-medium">
+                                Ditreskrimsus Polda Metro Jaya
+                            </p>
+                            <div className="mt-2 flex justify-center space-x-1">
+                                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+                                <div className="w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
+                                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+                            </div>
+                        </div>
                         <Form onSubmit={handleSubmit} defaultValues={defaultValue}>
                             <div className="mt-8 space-y-6">
                                 <div className="space-y-4">
