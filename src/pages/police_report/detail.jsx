@@ -89,7 +89,7 @@ const Detail = ({ title, level }) => {
                 </div> */}
 
                 <div className="flex my-2 gap-2">
-                    <div className="w-52 font-semibold">Tersangka</div>
+                    <div className="w-52 font-semibold">Terlapor</div>
                     <div>:</div>
                     <div className="flex-1">{data?.data?.content?.tersangka}</div>
                 </div>
@@ -117,12 +117,6 @@ const Detail = ({ title, level }) => {
                 </div>
 
                 <div className="flex my-2 gap-2">
-                    <div className="w-52 font-semibold">Yang Menerima Laporan</div>
-                    <div>:</div>
-                    <div className="flex-1">{data?.data?.content?.petugas_penerima}</div>
-                </div>
-
-                <div className="flex my-2 gap-2">
                     <div className="w-52 font-semibold">Barang Bukti</div>
                     <div>:</div>
                     <div className="flex-1 whitespace-break-spaces">{data?.data?.content?.barang_bukti}</div>
@@ -141,10 +135,23 @@ const Detail = ({ title, level }) => {
                 </div>
 
                 <div className="flex my-2 gap-2">
+                    <div className="w-52 font-semibold">Penyidik</div>
+                    <div>:</div>
+                    <div className="flex-1">{data?.data?.content?.petugas_penerima}</div>
+                </div>
+
+                <div className="flex my-2 gap-2">
                     <div className="w-52 font-semibold">Status</div>
                     <div>:</div>
                     <div className="flex-1 capitalize">{data?.data?.content?.status}</div>
                 </div>
+
+                <div className="flex my-2 gap-2">
+                    <div className="w-52 font-semibold">Keterangan</div>
+                    <div>:</div>
+                    <div className="flex-1 capitalize">{data?.data?.content?.keterangan ?? "-"}</div>
+                </div>
+
                 <div className="flex flex-col my-2 gap-2 mt-6">
                     <div className="border border-gray-300 relative rounded-md px-4 p-2">
                         <div className="font-semibold bg-blue-400 absolute top-[-1rem] p-1 px-2 rounded-md text-white">Perkembangan</div>
@@ -156,13 +163,13 @@ const Detail = ({ title, level }) => {
                                         <div>:</div>
                                         <div className="flex-1">{format(item.tanggal_update, "EEEE, dd MMMM yyyy | HH:mm", { locale: idDate }) || '-'}</div>
                                     </div>
-                                    <div className="flex my-1 gap-2">
+                                    {/* <div className="flex my-1 gap-2">
                                         <div className="w-52 font-semibold">PIC</div>
                                         <div>:</div>
                                         <div className="flex-1">{item.pic || '-'}</div>
-                                    </div>
+                                    </div> */}
                                     <div className="flex my-1 gap-2">
-                                        <div className="w-52 font-semibold">Keterangan</div>
+                                        <div className="w-52 font-semibold">Perkembangan</div>
                                         <div>:</div>
                                         <div className="flex-1">{item.keterangan || '-'}</div>
                                     </div>

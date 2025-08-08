@@ -12,6 +12,7 @@ import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import Modal from "../../components/Modal";
 import { useState } from "react";
+import DatePicker from "../../components/HooksForm/DatePicker";
 
 const User = ({ title, level }) => {
     const breadcrumbItems = [
@@ -98,6 +99,62 @@ const User = ({ title, level }) => {
                                     // disabled={true}
                                     placeholder="Search"
                                     prefix={<MagnifyingGlassIcon className="h-5 px-2" />}
+                                />
+                            </div>
+                            <div className="w-[20rem]">
+                                <DatePicker
+                                    name={"tanggal_laporan"}
+                                    maxDate={new Date()}
+                                    // showTimeSelect
+                                    //  validation={["required"]}
+                                    // timeFormat="HH:mm"
+                                    // timeIntervals={15}
+                                    isClearable
+                                    dateFormat="dd/MM/yyyy"
+                                    placeholder="Tanggal/Jam Laporan"
+                                    onChange={(date) => {
+                                        if (date) {
+                                            const dates = format(new Date(date), "yyyy-MM-dd");
+                                            setparams(prev => ({
+                                                ...prev,
+                                                tanggal_laporan: dates
+                                            }))
+                                        }
+                                        else {
+                                            setparams(prev => ({
+                                                ...prev,
+                                                tanggal_laporan: date
+                                            }))
+                                        }
+                                    }}
+                                />
+                            </div>
+                            <div className="w-[20rem]">
+                                <DatePicker
+                                    name={"tanggal_kejadian"}
+                                    maxDate={new Date()}
+                                    // showTimeSelect
+                                    // validation={["required"]}
+                                    // timeFormat="HH:mm"
+                                    // timeIntervals={15}
+                                    isClearable
+                                    dateFormat="dd/MM/yyyy"
+                                    placeholder="Tanggal/Jam Kejadian"
+                                    onChange={(date) => {
+                                        if (date) {
+                                            const dates = format(new Date(date), "yyyy-MM-dd");
+                                            setparams(prev => ({
+                                                ...prev,
+                                                tanggal_kejadian: dates
+                                            }))
+                                        }
+                                        else {
+                                            setparams(prev => ({
+                                                ...prev,
+                                                tanggal_kejadian: date
+                                            }))
+                                        }
+                                    }}
                                 />
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 import Breadcrumb from "../../components/BreadCrumbs"
 import Input from "../../components/HooksForm/Input";
 import FormProvider from '../../components/HooksForm/Form';
-import { PlusCircleIcon, PlusIcon } from "@heroicons/react/24/solid";
+import { MinusIcon, PlusCircleIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { useParams } from "react-router-dom";
 import Textarea from "../../components/HooksForm/TextArea";
 import DatePicker from "../../components/HooksForm/DatePicker";
@@ -38,10 +38,11 @@ const Form = ({ title, level }) => {
         "barang_bukti": "",
         "tersangka": "",
         "perkembangan": [{
-            "pic": "",
+            // "pic": "",
             "tanggal_update": "",
             "keterangan": "",
         }],
+        "keterangan": "",
         "status": "",
         "umur_pelapor": "",
         "singkat_kejadian": "",
@@ -124,7 +125,7 @@ const Form = ({ title, level }) => {
                                 />
                             </div>
                             <div className="leading-0 flex flex-col gap-2">
-                                <label className="text-sm font-medium text-gray-600">Tersangka</label>
+                                <label className="text-sm font-medium text-gray-600">Terlapor</label>
                                 <Textarea
                                     className="text-sm"
                                     name="tersangka"
@@ -146,11 +147,11 @@ const Form = ({ title, level }) => {
                                 />
                             </div>
                             <div className="leading-0 flex flex-col gap-2">
-                                <label className="text-sm font-medium text-gray-600">Yang Menerima Laporan</label>
+                                <label className="text-sm font-medium text-gray-600">Penyidik</label>
                                 <Textarea
                                     className="text-sm"
                                     name="petugas_penerima"
-                                    placeholder="Yang Menerima Laporan..."
+                                    placeholder="Penyidik..."
                                     validation={["required"]}
                                     validationMessage={["Keterangan wajib diisi."]}
                                     rows={4}
@@ -166,13 +167,24 @@ const Form = ({ title, level }) => {
                                     validationMessage={["Keterangan wajib diisi."]}
                                     rows={4}
                                 />
-                            </div> 
+                            </div>
                             <div className="leading-0 flex flex-col gap-2">
                                 <label className="text-sm font-medium text-gray-600">Pasal</label>
                                 <Textarea
                                     className="text-sm"
                                     name="pasal"
                                     placeholder="Tersangka..."
+                                    validation={["required"]}
+                                    validationMessage={["Keterangan wajib diisi."]}
+                                    rows={4}
+                                />
+                            </div>
+                            <div className="leading-0 flex flex-col gap-2">
+                                <label className="text-sm font-medium text-gray-600">Keterangan</label>
+                                <Textarea
+                                    className="text-sm"
+                                    name="keterangan"
+                                    placeholder="Keterangan..."
                                     validation={["required"]}
                                     validationMessage={["Keterangan wajib diisi."]}
                                     rows={4}
@@ -303,7 +315,7 @@ export const Perkembangan = () => {
                                 <label className="text-sm font-medium text-gray-600">Tanggal Update</label>
                                 <TanggalUpdate name={`perkembangan.${index}.tanggal_update`} />
                             </div>
-                            <div className="leading-0 flex flex-col gap-2 flex-1">
+                            {/* <div className="leading-0 flex flex-col gap-2 flex-1">
                                 <label className="text-sm font-medium text-gray-600">PIC</label>
                                 <Input
                                     className="text-sm px-3"
@@ -312,7 +324,7 @@ export const Perkembangan = () => {
                                     validation={["required"]}
                                     validationMessage={["Keterangan wajib diisi."]}
                                 />
-                            </div>
+                            </div> */}
                             <div className="leading-0 flex flex-col gap-2 flex-1">
                                 <label className="text-sm font-medium text-gray-600">Status Perkembangan</label>
                                 <Input
@@ -333,7 +345,7 @@ export const Perkembangan = () => {
                                 {index > 0 && <button
                                     onClick={() => handleRemoveField(index)}
                                     className="bg-red-400 p-3 mt-7 cursor-pointer rounded-full" type="button">
-                                    <PlusIcon className="h-4 text-white" />
+                                    <MinusIcon className="h-4 text-white" />
                                 </button>}
                             </div>
                         </div>
