@@ -54,7 +54,7 @@ const User = ({ title, level }) => {
                 onSort: sort => setparams(prev => ({ ...prev, sort })),
                 render: (value) => {
                     const tanggal = new Date(value);
-                    const hasil = format(tanggal, "EEEE, dd MMMM yyyy | hh:mm", { locale: id });
+                    const hasil = format(tanggal, "EEEE, dd MMMM yyyy | HH:mm", { locale: id });
                     return hasil ?? "-"
                 }
             },
@@ -63,7 +63,7 @@ const User = ({ title, level }) => {
                 onSort: sort => setparams(prev => ({ ...prev, sort })),
                 render: (value) => {
                     const tanggal = new Date(value);
-                    const hasil = format(tanggal, "EEEE, dd MMMM yyyy | hh:mm", { locale: id });
+                    const hasil = format(tanggal, "EEEE, dd MMMM yyyy | HH:mm", { locale: id });
                     return hasil ?? "-"
                 }
             },
@@ -71,18 +71,8 @@ const User = ({ title, level }) => {
                 key: 'status', title: 'Status',
                 onSort: sort => setparams(prev => ({ ...prev, sort })),
                 render: (value) => value ?? "-"
-            },
-            {
-                key: '-', title: 'Aksi',
-                level,
-                onSort: sort => setparams(prev => ({ ...prev, sort })),
-                render: (_, row) => (
-                    <button onClick={() => {
-                        setpassed(row?._id)
-                    }} type="button" className="bg-red-400 cursor-pointer p-2 text-center text-white text-sm rounded-sm items-center flex gap-1"><TrashIcon className="h-4 text-white text-sm" />Hapus</button>
-                )
-            },
-        ].filter(item => item?.level !== level)
+            }
+        ]
     }
     return (
         <Form defaultValues={defaultValue}>
@@ -97,10 +87,13 @@ const User = ({ title, level }) => {
                             <div className="w-[20rem]">
                                 <Input
                                     isDebounce={true}
-                                    onChangeDebounced={(raw) => setparams(prev => ({
-                                        ...prev,
-                                        keyword: raw?.target?.value
-                                    }))}
+                                    onChangeDebounced={(raw) => {
+                                        // console.log(raw)
+                                        setparams(prev => ({
+                                            ...prev,
+                                            keyword: raw?.target?.value.trim()
+                                        }))
+                                    }}
                                     name="keyword"
                                     // disabled={true}
                                     placeholder="Search"

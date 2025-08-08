@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react';
 import ContextMenu from '../Context';
 import { Link, useLocation } from 'react-router-dom';
 import result from './data';
-import logo_krimsus from '../../assets/images/logo-krimsus.png'
 
 const findItemByCodeWithParents = (data, code, parents = []) => {
     for (const item of data) {
@@ -59,7 +58,16 @@ const Sidemenu = ({ level }) => {
                 <div className='flex-1 animate-gradient bg-gradient-to-r from-blue-400 via-black to-cyan-500 bg-[length:200%_400%] relative justify-center flex flex-col items-center px-4 py-2'>
                     {/* <img src={ribbon} className='w-41 absolute right-[-3rem] scale-y-[-1] rotate-90 ' alt='background' /> */}
                     {/* <img src={ribbon} className='w-41 absolute left-[-3rem] scale-x-[-1] rotate-90 ' alt='background' /> */}
-                    <img src={logo_krimsus} className='w-full' alt='background' />
+                    {/* <img src={logo_krimsus} className='w-full' alt='background' /> */}
+                    <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <div className="text-center">
+                            <h1 className="text-white text-xl font-bold tracking-wider">
+                                SIPIDTER
+                            </h1>
+                            <div className="w-24 h-1 bg-white mx-auto rounded-sm scale-x-[-1]" style={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 0% 0%)' }}></div>
+                        </div>
+                    </div>
+                   
                     {/* <ShieldCheckIcon className="w-32 h-32 text-white" /> */}
 
                     {/* <div className='text-sm font-bold text-white'><span>SI</span><span className='text-sm font-bold text-white'>PIDTER</span></div> */}
@@ -67,7 +75,7 @@ const Sidemenu = ({ level }) => {
                 {
                     result?.map((item, index) => {
                         const filteredMenu = item?.childrens?.filter(item => {
-                            if (item.code === "user" && !['admin','master'].includes(level)) return false;
+                            if (item.code === "user" && !['admin', 'master'].includes(level)) return false;
                             return true;
                         });
                         return (

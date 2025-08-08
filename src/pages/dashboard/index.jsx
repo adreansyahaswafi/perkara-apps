@@ -1,6 +1,6 @@
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import Breadcrumb from "../../components/BreadCrumbs";
-import { BookOpenIcon, BriefcaseIcon, ClipboardDocumentCheckIcon } from "@heroicons/react/24/solid";
+import { BookOpenIcon, ClipboardDocumentCheckIcon } from "@heroicons/react/24/solid";
 import useDashboard from "./hooks-integration/useDashboard";
 import Spinner from "../../components/Spinner";
 
@@ -16,7 +16,7 @@ const Dashboard = () => {
                 <h1 className="text-3xl font-bold">Beranda</h1>
                 <Breadcrumb items={breadcrumbItems} />
             </div>
-            <div className="pt-8 grid grid-cols-3 gap-4">
+            <div className="pt-8 grid grid-cols-2 gap-4">
                 <div className="relative cursor-pointer flex justify-between border-t-3 border-t-green-600 rounded shadow-md p-5 transform transition-transform hover:scale-105">
                     <div className="absolute top-[-22px]">
                         <div className="bg-green-600 shadow-md p-4 rounded">
@@ -36,7 +36,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative cursor-pointer flex justify-between border-t-3 border-t-amber-400  rounded shadow-md p-5 transform transition-transform hover:scale-105">
+                {/* <div className="relative cursor-pointer flex justify-between border-t-3 border-t-amber-400  rounded shadow-md p-5 transform transition-transform hover:scale-105">
                     <div className="absolute top-[-22px]">
                         <div className="bg-amber-400   shadow-md p-4 rounded">
                             <BriefcaseIcon className="h-12 text-white" />
@@ -54,7 +54,7 @@ const Dashboard = () => {
                             <span className="text-sm text-neutral-400">Selengkapnya</span>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="relative cursor-pointer flex justify-between border-t-3 border-t-red-500 rounded shadow-md p-5 transform transition-transform hover:scale-105">
                     <div className="absolute top-[-22px]">
                         <div className="bg-red-500 shadow-md p-4 rounded">

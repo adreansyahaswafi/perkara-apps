@@ -18,9 +18,9 @@ const ReportAccount = Loadable(React.lazy(() => import('../pages/police_report')
 const ReportAccountCreate = Loadable(React.lazy(() => import('../pages/police_report/form')));
 const ReportAccountDetail = Loadable(React.lazy(() => import('../pages/police_report/detail')));
 
-const ReportAccountPolice = Loadable(React.lazy(() => import('../pages/register_police_report')));
-const ReportAccountPoliceCreate = Loadable(React.lazy(() => import('../pages/register_police_report/form')));
-const ReportAccountPoliceDetail = Loadable(React.lazy(() => import('../pages/register_police_report/detail')));
+// const ReportAccountPolice = Loadable(React.lazy(() => import('../pages/register_police_report')));
+// const ReportAccountPoliceCreate = Loadable(React.lazy(() => import('../pages/register_police_report/form')));
+// const ReportAccountPoliceDetail = Loadable(React.lazy(() => import('../pages/register_police_report/detail')));
 
 const PustakaPolice = Loadable(React.lazy(() => import('../pages/pustaka')));
 const PustakaPoliceCreate = Loadable(React.lazy(() => import('../pages/pustaka/form')));
@@ -57,10 +57,10 @@ const privateRoute = [
     { exact: true, path: '/laporan-polisi/:id', name: GenerateTitle('Detail Laporan'), component: ReportAccountDetail, access: "laporan", action: 'read' },
     { exact: true, path: '/laporan-polisi/:id/edit', name: GenerateTitle('Edit Laporan Polisi'), component: ReportAccountCreate, access: "laporan", action: 'read' },
 
-    { exact: true, path: '/register-laporan-polisi', name: GenerateTitle('Register Laporan Polisi'), component: ReportAccountPolice, access: "register-laporan", action: 'read' },
-    { exact: true, path: '/register-laporan-polisi/create', name: GenerateTitle('Buat Register Laporan Polisi'), component: ReportAccountPoliceCreate, access: "register-laporan", action: 'read' },
-    { exact: true, path: '/register-laporan-polisi/:id', name: GenerateTitle('Detail Register Laporan Polisi'), component: ReportAccountPoliceDetail, access: "register-laporan", action: 'read' },
-    { exact: true, path: '/register-laporan-polisi/:id/edit', name: GenerateTitle('Edit Register Laporan Polisi'), component: ReportAccountPoliceCreate, access: "register-laporan", action: 'read' },
+    // { exact: true, path: '/register-laporan-polisi', name: GenerateTitle('Register Laporan Polisi'), component: ReportAccountPolice, access: "register-laporan", action: 'read' },
+    // { exact: true, path: '/register-laporan-polisi/create', name: GenerateTitle('Buat Register Laporan Polisi'), component: ReportAccountPoliceCreate, access: "register-laporan", action: 'read' },
+    // { exact: true, path: '/register-laporan-polisi/:id', name: GenerateTitle('Detail Register Laporan Polisi'), component: ReportAccountPoliceDetail, access: "register-laporan", action: 'read' },
+    // { exact: true, path: '/register-laporan-polisi/:id/edit', name: GenerateTitle('Edit Register Laporan Polisi'), component: ReportAccountPoliceCreate, access: "register-laporan", action: 'read' },
 
     { exact: true, path: '/pustaka', name: GenerateTitle('Pustaka Pasal'), component:PustakaPolice, access: "register-laporan", action: 'read' },
     { exact: true, path: '/pustaka/create', name: GenerateTitle('Buat Pustaka Pasal'), component:PustakaPoliceCreate, access: "register-laporan", action: 'read' },

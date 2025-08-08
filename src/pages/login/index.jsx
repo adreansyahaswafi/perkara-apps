@@ -3,7 +3,7 @@ import Input from '../../components/HooksForm/Input';
 import { Link, Navigate } from 'react-router-dom';
 import useLogin from './hooks-integration/useLogin';
 import { ArrowRightStartOnRectangleIcon, EnvelopeIcon, LockClosedIcon, StarIcon } from '@heroicons/react/24/outline';
-
+import logo_krimsus from '../../assets/images/logo-krimsus.png'
 const LoginPage = () => {
     // const [open, setopen] = useState(false);
     const { postBody, isPosible } = useLogin();
@@ -58,21 +58,22 @@ const LoginPage = () => {
                             </div> */}
                             <div className="relative mb-4">
                                 {/* Logo Circle */}
-                                <div className="w-44 h-44 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                                {/* <div className="w-44 h-44 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                                     <div className="text-center">
                                         <h1 className="text-white text-3xl font-bold tracking-wider">
                                             SIPIDTER
                                         </h1>
                                         <div className="w-36 h-1 bg-white mx-auto rounded-sm scale-x-[-1]" style={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 0% 0%)' }}></div>
                                     </div>
-                                </div>
-
-                                {/* Shadow */}
-                                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-56 h-6 bg-black opacity-10 rounded-full blur-sm"></div>
+                                </div> */}
+                                <img src={logo_krimsus} className='w-full' alt='background' />
                             </div>
                         </div>                       
                         <p className="text-blue-200 text-sm font-medium">
-                            Sistem Informasi Tindak Pidana Tertentu  Ditreskrimsus Polda Metro Jaya
+                            Sistem Informasi Tindak Pidana Tertentu
+                        </p>
+                        <p className="text-blue-200 text-sm font-medium">
+                            Ditreskrimsus Polda Metro Jaya
                         </p>
                         <div className="mt-2 flex justify-center space-x-1">
                             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>

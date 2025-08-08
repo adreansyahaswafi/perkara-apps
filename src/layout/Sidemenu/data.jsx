@@ -1,5 +1,5 @@
 import { BookOpenIcon, TableCellsIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
-import { BriefcaseIcon, ClipboardDocumentCheckIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { ClipboardDocumentCheckIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
 const data = [{
     name: "Beranda",
     parent: 0,
@@ -13,13 +13,6 @@ const data = [{
     icon: <ClipboardDocumentCheckIcon className='h-[20px] font-bold ' />,
     code: 'laporan-polisi',
     link: '/laporan-polisi',
-    childrens: null
-}, {
-    name: "Register Laporan Polisi",
-    parent: 0,
-    icon: <BriefcaseIcon className='h-[20px] font-bold ' />,
-    code: 'register-laporan-polisi',
-    link: '/register-laporan-polisi',
     childrens: null
 }, {
     name: "Library Pasal",

@@ -50,6 +50,7 @@ const Input = ({
       }) => {
         const handleChange = (e) => {
           const newValue = transformer.output?.(e);
+          console.log(newValue)
           // transformer.input(newValue)      // Update internal state
           onChange(newValue);        // Update React Hook Form
 

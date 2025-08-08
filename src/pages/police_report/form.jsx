@@ -1,7 +1,7 @@
 import Breadcrumb from "../../components/BreadCrumbs"
 import Input from "../../components/HooksForm/Input";
 import FormProvider from '../../components/HooksForm/Form';
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { PlusCircleIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { useParams } from "react-router-dom";
 import Textarea from "../../components/HooksForm/TextArea";
 import DatePicker from "../../components/HooksForm/DatePicker";
@@ -32,15 +32,16 @@ const Form = ({ title, level }) => {
         "pelapor": "",
         "terlapor": "",
         "lokasi": "",
-        "tanggal_kejadian": "",
-        "tanggal_laporan": "",
+        "tanggal_kejadian": null,
+        "tanggal_laporan": null,
         "pasal": "",
         "barang_bukti": "",
         "tersangka": "",
-        "perkembangan": "",
-        "pic": "",
-        "tanggal_update": "",
-        "keterangan": "",
+        "perkembangan": [{
+            "pic": "",
+            "tanggal_update": "",
+            "keterangan": "",
+        }],
         "status": "",
         "umur_pelapor": "",
         "singkat_kejadian": "",
@@ -71,7 +72,7 @@ const Form = ({ title, level }) => {
                     <h2 className="text-xl absolute top-[-1.5rem] bg-blue-400 w-sm p-2 font-bold text-white px-4">Form Laporan Polisi</h2>
                     <div className="grid grid-cols-1 my-4">
                         <div className="flex flex-col gap-2">
-                            <div className="flex gap-2">
+                            <div className="grid gap-3 grid-cols-3">
                                 <div className="leading-0 flex flex-col gap-2 flex-1">
                                     <label className="text-sm font-medium text-gray-600">No. LP</label>
                                     <Input validation={["required"]} name="no_laporan" className="text-sm px-3" placeholder="Nomor laporan..." />
@@ -165,18 +166,7 @@ const Form = ({ title, level }) => {
                                     validationMessage={["Keterangan wajib diisi."]}
                                     rows={4}
                                 />
-                            </div>
-                            <div className="leading-0 flex flex-col gap-2">
-                                <label className="text-sm font-medium text-gray-600">Keterangan</label>
-                                <Textarea
-                                    className="text-sm"
-                                    name="keterangan"
-                                    placeholder="Tersangka..."
-                                    validation={["required"]}
-                                    validationMessage={["Keterangan wajib diisi."]}
-                                    rows={4}
-                                />
-                            </div>
+                            </div> 
                             <div className="leading-0 flex flex-col gap-2">
                                 <label className="text-sm font-medium text-gray-600">Pasal</label>
                                 <Textarea
@@ -190,33 +180,7 @@ const Form = ({ title, level }) => {
                             </div>
                             <div className="flex flex-col gap-2">
                                 <label className="text-sm font-medium text-gray-600">Perkembangan</label>
-                                <div className="flex gap-3 items-center p-8 border border-gray-300 rounded-md">
-                                    <div className="leading-0 flex flex-col gap-2 flex-1">
-                                        <label className="text-sm font-medium text-gray-600">Tanggal Update</label>
-                                        <TanggalUpdate />
-                                    </div>
-                                    <div className="leading-0 flex flex-col gap-2 flex-1">
-                                        <label className="text-sm font-medium text-gray-600">PIC</label>
-                                        <Input
-                                            className="text-sm px-3"
-                                            name="pic"
-                                            placeholder="PIC..."
-                                            validation={["required"]}
-                                            validationMessage={["Keterangan wajib diisi."]}
-                                        />
-                                    </div>
-                                    <div className="leading-0 flex flex-col gap-2 flex-1">
-                                        <label className="text-sm font-medium text-gray-600">Status Perkembangan</label>
-                                        <Input
-                                            className="text-sm px-3"
-                                            name="perkembangan"
-                                            placeholder="Perkembangan..."
-                                            validation={["required"]}
-                                            validationMessage={["Keterangan wajib diisi."]}
-                                            rows={4}
-                                        />
-                                    </div>
-                                </div>
+                                <Perkembangan />
                             </div>
                             <div className="leading-0 flex flex-col gap-2">
                                 <label className="text-sm font-medium text-gray-600">Status</label>
@@ -241,11 +205,11 @@ const Form = ({ title, level }) => {
     )
 };
 
-export const TanggalUpdate = () => {
+export const TanggalUpdate = ({ name }) => {
     const { setValue } = useFormContext();
     return (
         <DatePicker
-            name="tanggal_update"
+            name={name}
             minDate={new Date()}
             showTimeSelect
             validation={["required"]}
@@ -254,8 +218,8 @@ export const TanggalUpdate = () => {
             dateFormat="dd/MM/yyyy HH:mm"
             placeholder="Tanggal/Jam Laporan"
             onChange={(date) => {
-                const dates = format(new Date(date), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-                setValue('tanggal_update', dates);
+                const dates = format(new Date(date), "yyyy-MM-dd HH:mm:ss");
+                setValue(name, dates);
             }}
         />
     )
@@ -274,7 +238,7 @@ export const Dilaporkan = () => {
             dateFormat="dd/MM/yyyy HH:mm"
             placeholder="Tanggal/Jam Laporan"
             onChange={(date) => {
-                const dates = format(new Date(date), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                const dates = format(new Date(date), "yyyy-MM-dd HH:mm:ss");
                 setValue('tanggal_laporan', dates);
             }}
         />
@@ -294,7 +258,7 @@ export const Kejadian = () => {
             dateFormat="dd/MM/yyyy HH:mm"
             placeholder="Tanggal/Jam Kejadian"
             onChange={(date) => {
-                const dates = format(new Date(date), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                const dates = format(new Date(date), "yyyy-MM-dd HH:mm:ss");
                 setValue('tanggal_kejadian', dates);
             }}
         />
@@ -308,12 +272,76 @@ export const IsEdit = ({ id }) => {
     useEffect(() => {
         if (loading === 'resolved') {
             const formData = data.data.content;
+            console.log(formData)
             Object.entries(formData).forEach(([key, value]) => {
                 setValue(key, value ?? ''); // handle null/undefined
             });
         }
     }, [loading]);
     return null
+}
+
+export const Perkembangan = () => {
+    const { watch, setValue } = useFormContext();
+    const fields = watch('perkembangan');
+    const handleAddField = () => {
+        setValue('perkembangan', [...fields, { tanggal_update: '', pic: '', keterangan: '' }]);
+    };
+    const handleRemoveField = (index) => {
+        const newFields = [...fields];
+        newFields.splice(index, 1);
+        setValue('perkembangan', newFields);
+
+    };
+    return (
+        <div className="flex gap-4 flex-col relative items-center p-8 border border-gray-300 rounded-md">
+            {
+                fields?.map((_, index) => {
+                    return (
+                        <div className="flex w-full gap-2" key={index}>
+                            <div className="leading-0 flex flex-col gap-2 flex-1">
+                                <label className="text-sm font-medium text-gray-600">Tanggal Update</label>
+                                <TanggalUpdate name={`perkembangan.${index}.tanggal_update`} />
+                            </div>
+                            <div className="leading-0 flex flex-col gap-2 flex-1">
+                                <label className="text-sm font-medium text-gray-600">PIC</label>
+                                <Input
+                                    className="text-sm px-3"
+                                    name={`perkembangan.${index}.pic`}
+                                    placeholder="PIC..."
+                                    validation={["required"]}
+                                    validationMessage={["Keterangan wajib diisi."]}
+                                />
+                            </div>
+                            <div className="leading-0 flex flex-col gap-2 flex-1">
+                                <label className="text-sm font-medium text-gray-600">Status Perkembangan</label>
+                                <Input
+                                    className="text-sm px-3"
+                                    name={`perkembangan.${index}.keterangan`}
+                                    placeholder="Perkembangan..."
+                                    validation={["required"]}
+                                    validationMessage={["Keterangan wajib diisi."]}
+                                    rows={4}
+                                />
+                            </div>
+                            <div>
+                                {index === 0 && <button
+                                    onClick={handleAddField}
+                                    className="bg-blue-400 p-3 mt-7 cursor-pointer rounded-full" type="button">
+                                    <PlusIcon className="h-4 text-white" />
+                                </button>}
+                                {index > 0 && <button
+                                    onClick={() => handleRemoveField(index)}
+                                    className="bg-red-400 p-3 mt-7 cursor-pointer rounded-full" type="button">
+                                    <PlusIcon className="h-4 text-white" />
+                                </button>}
+                            </div>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    )
 }
 
 export default Form;
