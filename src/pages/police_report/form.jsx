@@ -35,6 +35,7 @@ const Form = ({ title, level }) => {
         "tanggal_kejadian": null,
         "tanggal_laporan": null,
         "pasal": "",
+        "saksi": "",
         "barang_bukti": "",
         "tersangka": "",
         "perkembangan": [{
@@ -136,6 +137,17 @@ const Form = ({ title, level }) => {
                                 />
                             </div>
                             <div className="leading-0 flex flex-col gap-2">
+                                <label className="text-sm font-medium text-gray-600">Saksi</label>
+                                <Textarea
+                                    className="text-sm"
+                                    name="saksi"
+                                    placeholder="Saksi..."
+                                    validation={["required"]}
+                                    validationMessage={["Saksi wajib diisi."]}
+                                    rows={4}
+                                />
+                            </div>
+                            <div className="leading-0 flex flex-col gap-2">
                                 <label className="text-sm font-medium text-gray-600">Barang Bukti</label>
                                 <Textarea
                                     className="text-sm"
@@ -222,7 +234,7 @@ export const TanggalUpdate = ({ name }) => {
     return (
         <DatePicker
             name={name}
-            minDate={new Date()}
+            // minDate={new Date()}
             showTimeSelect
             validation={["required"]}
             timeFormat="HH:mm"
@@ -242,7 +254,7 @@ export const Dilaporkan = () => {
     return (
         <DatePicker
             name="tanggal_laporan"
-            minDate={new Date()}
+            // minDate={new Date()}
             showTimeSelect
             validation={["required"]}
             timeFormat="HH:mm"
@@ -262,7 +274,7 @@ export const Kejadian = () => {
     return (
         <DatePicker
             name="tanggal_kejadian"
-            minDate={new Date()}
+            // minDate={new Date()}
             showTimeSelect
             validation={["required"]}
             timeFormat="HH:mm"
@@ -315,7 +327,7 @@ export const Perkembangan = () => {
                                 <label className="text-sm font-medium text-gray-600">Tanggal Update</label>
                                 <TanggalUpdate name={`perkembangan.${index}.tanggal_update`} />
                             </div>
-                            <div className="leading-0 flex flex-col gap-2 flex-1">
+                            {/* <div className="leading-0 flex flex-col gap-2 flex-1">
                                 <label className="text-sm font-medium text-gray-600">PIC</label>
                                 <Input
                                     className="text-sm px-3"
@@ -324,10 +336,10 @@ export const Perkembangan = () => {
                                     validation={["required"]}
                                     validationMessage={["Keterangan wajib diisi."]}
                                 />
-                            </div>
+                            </div> */}
                             <div className="leading-0 flex flex-col gap-2 flex-1">
                                 <label className="text-sm font-medium text-gray-600">Perkembangan</label>
-                                <Input                            
+                                <Input
                                     className="text-sm px-3"
                                     name={`perkembangan.${index}.keterangan`}
                                     placeholder="Perkembangan..."
