@@ -95,7 +95,7 @@ const Detail = ({ title, level }) => {
                 </div>
 
                 <div className="flex my-2 gap-2">
-                    <div className="w-52 font-semibold">Terlapor</div>
+                    <div className="w-52 font-semibold">Saksi</div>
                     <div>:</div>
                     <div className="flex-1 whitespace-pre-wrap">{data?.data?.content?.saksi}</div>
                 </div>
