@@ -158,8 +158,9 @@ const User = ({ title, level }) => {
                                 />
                             </div>
                         </div>
+                        {console.log(level)}
                         <div className="flex justify-end">
-                            {level === 'master' && <Link
+                            {['master','admin'].includes(level) && <Link
                                 to="/laporan-polisi/create"
                                 className={`p-2 px-6 bg-blue-400 flex items-center gap-2 cursor-pointer rounded-md text-base text-white hover:bg-blue-500 hover:text-white`}
                             >
