@@ -151,7 +151,7 @@ const LoginPage = () => {
                         {/* Footer */}
                         <div className="mt-6 text-center">
                             <p className="text-blue-200 text-xs">
-                                © 2024 Kepolisian Republik Indonesia
+                                © 2025 Kepolisian Republik Indonesia
                             </p>
                             <div className="mt-2 flex justify-center space-x-4 text-blue-300">
                                 <div className="w-1 h-1 bg-current rounded-full animate-ping"></div>
